@@ -1,0 +1,4 @@
+Create: curl -X POST http://localhost:8080/api/books -H "Content-Type: application/json" -d "{\"title\":\"Demo\",\"author\":\"You\",\"isbn\":\"123\"}"
+List: curl http://localhost:8080/api/books
+Get: curl http://localhost:8080/api/books/1
+Update: curl -X PUT http://localhost:8080/api/books/1 -H "Content-Type: application/json" -d "{\"title\":\"Updated\",\"author\":\"You\",\"isbn\":\"456\"}"
