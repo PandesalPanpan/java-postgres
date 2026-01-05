@@ -11,7 +11,7 @@ import java.util.*;
 import java.util.stream.*;
 
 @RestController
-@RequestMapping("/students")
+@RequestMapping("/api/students")
 public class StudentController {
 
     private final StudentRepository studentRepository;
