@@ -1,0 +1,304 @@
+================================================================================
+STUDENT GRADE MANAGEMENT API - TEST ROUTES
+================================================================================
+
+Base URL: http://localhost:8080
+Content-Type: application/json
+
+================================================================================
+1. CREATE STUDENT
+================================================================================
+POST /students
+
+Request Body:
+{
+  "full_name": "Juan Dela Cruz"
+}
+
+Example cURL (Windows - Single Line):
+curl -X POST http://localhost:8080/students -H "Content-Type: application/json" -d "{\"full_name\": \"Juan Dela Cruz\"}"
+
+PowerShell (Multi-line with backticks):
+curl -X POST http://localhost:8080/students `
+  -H "Content-Type: application/json" `
+  -d "{\"full_name\": \"Juan Dela Cruz\"}"
+
+CMD (Multi-line with ^):
+curl -X POST http://localhost:8080/students ^
+  -H "Content-Type: application/json" ^
+  -d "{\"full_name\": \"Juan Dela Cruz\"}"
+
+Expected Response (201 Created):
+{
+  "id": 1,
+  "fullName": "Juan Dela Cruz"
+}
+
+Note: Save the "id" (numeric) from the response for use in subsequent requests.
+
+================================================================================
+2. GET STUDENT
+================================================================================
+GET /students/{studentId}
+
+Example cURL:
+curl -X GET http://localhost:8080/students/1
+
+Expected Response (200 OK):
+{
+  "id": 1,
+  "fullName": "Juan Dela Cruz"
+}
+
+================================================================================
+3. ADD SUBJECT GRADE
+================================================================================
+POST /students/{studentId}/subjects
+
+Request Body:
+{
+  "subject_name": "Mathematics",
+  "subject_code": "MATH101",
+  "semester": "1st",
+  "school_year": "2025-2026",
+  "grade": 95
+}
+
+Example cURL (Windows - Single Line):
+curl -X POST http://localhost:8080/students/1/subjects -H "Content-Type: application/json" -d "{\"subject_name\": \"Mathematics\", \"subject_code\": \"MATH101\", \"semester\": \"1st\", \"school_year\": \"2025-2026\", \"grade\": 95}"
+
+PowerShell (Multi-line):
+curl -X POST http://localhost:8080/students/1/subjects `
+  -H "Content-Type: application/json" `
+  -d "{\"subject_name\": \"Mathematics\", \"subject_code\": \"MATH101\", \"semester\": \"1st\", \"school_year\": \"2025-2026\", \"grade\": 95}"
+
+Expected Response (201 Created):
+{
+  "subjectName": "Mathematics",
+  "subjectCode": "MATH101",
+  "semester": "1st",
+  "schoolYear": "2025-2026",
+  "grade": 95
+}
+
+Note: You can add multiple subjects for the same student.
+
+Additional Examples:
+
+Science Subject (Single Line):
+curl -X POST http://localhost:8080/students/1/subjects -H "Content-Type: application/json" -d "{\"subject_name\": \"Science\", \"subject_code\": \"SCI101\", \"semester\": \"1st\", \"school_year\": \"2025-2026\", \"grade\": 88}"
+
+English Subject (Single Line):
+curl -X POST http://localhost:8080/students/1/subjects -H "Content-Type: application/json" -d "{\"subject_name\": \"English\", \"subject_code\": \"ENG101\", \"semester\": \"1st\", \"school_year\": \"2025-2026\", \"grade\": 92}"
+
+================================================================================
+4. GET STUDENT GRADE SHEET
+================================================================================
+GET /students/{studentId}/grades
+
+Example cURL:
+curl -X GET http://localhost:8080/students/1/grades
+
+Expected Response (200 OK):
+{
+  "student": "Juan Dela Cruz",
+  "subjects": [
+    {
+      "subjectName": "Mathematics",
+      "subjectCode": "MATH101",
+      "semester": "1st",
+      "schoolYear": "2025-2026",
+      "grade": 95
+    },
+    {
+      "subjectName": "Science",
+      "subjectCode": "SCI101",
+      "semester": "1st",
+      "schoolYear": "2025-2026",
+      "grade": 88
+    },
+    {
+      "subjectName": "English",
+      "subjectCode": "ENG101",
+      "semester": "1st",
+      "schoolYear": "2025-2026",
+      "grade": 92
+    }
+  ]
+}
+
+================================================================================
+5. UPDATE GRADE
+================================================================================
+PATCH /subjects/{subjectGradeId}
+
+Request Body:
+{
+  "grade": 97
+}
+
+Example cURL (Windows - Single Line):
+curl -X PATCH http://localhost:8080/subjects/1 -H "Content-Type: application/json" -d "{\"grade\": 97}"
+
+PowerShell (Multi-line):
+curl -X PATCH http://localhost:8080/subjects/1 `
+  -H "Content-Type: application/json" `
+  -d "{\"grade\": 97}"
+
+Expected Response (200 OK):
+{
+  "subjectName": "Mathematics",
+  "subjectCode": "MATH101",
+  "semester": "1st",
+  "schoolYear": "2025-2026",
+  "grade": 97
+}
+
+Note: Use the subject grade ID from the grade sheet response or from the add subject response.
+
+================================================================================
+6. DELETE SUBJECT GRADE
+================================================================================
+DELETE /subjects/{subjectGradeId}
+
+Example cURL:
+curl -X DELETE http://localhost:8080/subjects/1
+
+Expected Response (204 No Content):
+(No response body)
+
+================================================================================
+7. DELETE STUDENT
+================================================================================
+DELETE /students/{studentId}
+
+Example cURL:
+curl -X DELETE http://localhost:8080/students/1
+
+Expected Response (204 No Content):
+(No response body)
+
+Note: This will also delete all associated subject grades (CASCADE DELETE).
+
+================================================================================
+TESTING WORKFLOW EXAMPLE
+================================================================================
+
+Step 1: Create a student
+POST /students
+{
+  "full_name": "Maria Santos"
+}
+Response: Save the student ID (e.g., 1)
+
+Step 2: Add multiple subjects
+POST /students/1/subjects
+{
+  "subject_name": "Mathematics",
+  "subject_code": "MATH101",
+  "semester": "1st",
+  "school_year": "2025-2026",
+  "grade": 95
+}
+
+POST /students/1/subjects
+{
+  "subject_name": "Science",
+  "subject_code": "SCI101",
+  "semester": "1st",
+  "school_year": "2025-2026",
+  "grade": 88
+}
+
+Step 3: View the grade sheet
+GET /students/1/grades
+
+Step 4: Update a grade (use subject grade ID from step 3, e.g., 1)
+PATCH /subjects/1
+{
+  "grade": 97
+}
+
+Step 5: View updated grade sheet
+GET /students/1/grades
+
+Step 6: Delete a subject grade
+DELETE /subjects/1
+
+Step 7: Delete the student (this will delete all remaining subject grades)
+DELETE /students/1
+
+================================================================================
+ERROR RESPONSES
+================================================================================
+
+404 Not Found - Student/Subject Grade not found:
+{
+  "timestamp": "2025-01-XX...",
+  "status": 404,
+  "error": "Not Found",
+  "message": "Student not found",
+  "path": "/students/invalid-id"
+}
+
+400 Bad Request - Validation errors:
+{
+  "timestamp": "2025-01-XX...",
+  "status": 400,
+  "error": "Bad Request",
+  "message": "Validation failed",
+  "errors": [
+    {
+      "field": "fullName",
+      "message": "Full name is required"
+    }
+  ]
+}
+
+================================================================================
+USING POSTMAN OR HTTPIE
+================================================================================
+
+Postman:
+- Import the cURL commands above
+- Or manually create requests with the URLs and JSON bodies
+
+HTTPie (alternative to cURL - Windows Single Line):
+http POST localhost:8080/students full_name="Juan Dela Cruz"
+
+http GET localhost:8080/students/1
+
+http POST localhost:8080/students/1/subjects subject_name="Mathematics" subject_code="MATH101" semester="1st" school_year="2025-2026" grade:=95
+
+http GET localhost:8080/students/1/grades
+
+http PATCH localhost:8080/subjects/1 grade:=97
+
+http DELETE localhost:8080/subjects/1
+
+http DELETE localhost:8080/students/1
+
+================================================================================
+WINDOWS COMMAND LINE NOTES
+================================================================================
+
+1. Single-line commands work in both CMD and PowerShell
+2. For multi-line in PowerShell, use backticks (`) at the end of each line
+3. For multi-line in CMD, use caret (^) at the end of each line
+4. JSON strings in Windows: Use double quotes for outer string, escaped quotes for inner JSON
+5. Example: -d "{\"key\": \"value\"}" works in Windows
+
+================================================================================
+NOTES
+================================================================================
+
+1. Replace IDs in examples with actual numeric IDs from your responses
+2. All IDs are numeric (Long type, e.g., 1, 2, 3, etc.)
+3. Grade values are numeric (can be decimal, e.g., 95.5)
+4. All endpoints return JSON except DELETE operations (204 No Content)
+5. Make sure your Spring Boot application is running on port 8080
+6. If using a different port, update the base URL accordingly
+7. All cURL commands above are Windows-compatible (single-line format)
+
+================================================================================
+
