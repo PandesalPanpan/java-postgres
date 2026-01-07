@@ -7,6 +7,8 @@ import jakarta.validation.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.*;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 import java.util.stream.*;
 
@@ -31,6 +33,32 @@ public class StudentController {
         return new StudentResponse(saved.getId(), saved.getFullName());
     }
 
+    private static final Set<BigDecimal> ALLOWED_GRADES = Set.of(
+            new BigDecimal("1.00"),
+            new BigDecimal("1.25"),
+            new BigDecimal("1.50"),
+            new BigDecimal("1.75"),
+            new BigDecimal("2.00"),
+            new BigDecimal("2.25"),
+            new BigDecimal("2.50"),
+            new BigDecimal("2.75"),
+            new BigDecimal("3.00"),
+            new BigDecimal("5.00")
+    );
+
+    private void validateGrade(BigDecimal grade) {
+        if (grade == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Grade is required");
+        }
+        BigDecimal normalized = grade.setScale(2, RoundingMode.HALF_UP);
+        if (!ALLOWED_GRADES.contains(normalized)) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Invalid grade. Allowed values: 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 5"
+            );
+        }
+    }
+
     @GetMapping("/{studentId}")
     public StudentResponse getStudent(@PathVariable Long studentId) {
         Student student = studentRepository.findById(studentId)
@@ -53,6 +81,8 @@ public class StudentController {
                                                 @Valid @RequestBody AddSubjectGradeRequest request) {
         Student student = studentRepository.findById(studentId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not found"));
+
+        validateGrade(request.getGrade());
 
         SubjectGrade subjectGrade = new SubjectGrade(
                 student,
