@@ -25,6 +25,13 @@ public class StudentController {
         this.subjectGradeRepository = subjectGradeRepository;
     }
 
+    @GetMapping
+    public List<StudentResponse> getAllStudents() {
+        return studentRepository.findAll().stream()
+                .map(s -> new StudentResponse(s.getId(), s.getFullName()))
+                .collect(Collectors.toList());
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public StudentResponse createStudent(@Valid @RequestBody CreateStudentRequest request) {
@@ -95,6 +102,7 @@ public class StudentController {
 
         SubjectGrade saved = subjectGradeRepository.save(subjectGrade);
         return new SubjectGradeResponse(
+                saved.getId(),
                 saved.getSubjectName(),
                 saved.getSubjectCode(),
                 saved.getSemester(),
@@ -111,6 +119,7 @@ public class StudentController {
         List<SubjectGrade> subjectGrades = subjectGradeRepository.findByStudentId(studentId);
         List<SubjectGradeResponse> subjectResponses = subjectGrades.stream()
                 .map(sg -> new SubjectGradeResponse(
+                        sg.getId(),
                         sg.getSubjectName(),
                         sg.getSubjectCode(),
                         sg.getSemester(),

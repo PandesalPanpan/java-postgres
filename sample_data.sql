@@ -6,6 +6,20 @@
 -- If you already have data, TRUNCATE the tables first or adjust the IDs.
 --   TRUNCATE TABLE subject_grades RESTART IDENTITY CASCADE;
 --   TRUNCATE TABLE students RESTART IDENTITY CASCADE;
+--   TRUNCATE TABLE users RESTART IDENTITY CASCADE;
+
+-- ============================================================================
+-- INSERT ADMIN USER
+-- ============================================================================
+-- Password: admin123 (BCrypt hashed)
+-- Column order: id, username, password
+-- 
+-- To generate a new BCrypt hash, run:
+--   mvn compile exec:java -Dexec.mainClass="com.actpostgres.demo.util.GeneratePasswordHash"
+-- Or use an online BCrypt generator: https://bcrypt-generator.com/
+--
+INSERT INTO users (username, password) 
+VALUES ('admin', '$2a$10$x1eV.bwz8CInj8Sh5WXJtuXf3xWnoSqOWwyZcoAOUj9DK1aNLPyfa');
 
 -- Insert 20 Students
 INSERT INTO students (full_name) VALUES ('Juan Dela Cruz');        -- id = 1

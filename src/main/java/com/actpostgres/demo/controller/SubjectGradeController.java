@@ -58,6 +58,7 @@ public class SubjectGradeController {
         SubjectGrade updated = subjectGradeRepository.save(subjectGrade);
 
         return new SubjectGradeResponse(
+                updated.getId(),
                 updated.getSubjectName(),
                 updated.getSubjectCode(),
                 updated.getSemester(),
