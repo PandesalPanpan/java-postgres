@@ -16,7 +16,6 @@ public class CorsConfig {
                 registry.addMapping("/api/**")
                         .allowedOrigins(
                                 "http://localhost:5173", // Vite default
-                                "http://localhost:5174", // your current Vite port
                                 "http://localhost:3000"  // CRA / other
                         )
                         .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
