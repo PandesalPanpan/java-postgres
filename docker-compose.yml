@@ -1,0 +1,55 @@
+services:
+  postgres:
+    image: postgres:17.7
+    container_name: pidro-postgres
+    environment:
+      POSTGRES_DB: pidro
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 2733
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - pidro-network
+
+  app:
+    image: pandesalpanpan/wmsfinalsis:backendv1
+    container_name: pidro-app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/pidro
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 2733
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+    ports:
+      - "8080:8080"
+    networks:
+      - pidro-network
+    restart: unless-stopped
+
+  frontend:
+    image: pandesalpanpan/wmsfinalsis:frontendv1
+    container_name: pidro-frontend
+    depends_on:
+      - app
+    ports:
+      - "3000:80"
+    networks:
+      - pidro-network
+    restart: unless-stopped
+
+networks:
+  pidro-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
