@@ -19,7 +19,7 @@ services:
       - pidro-network
 
   app:
-    image: pandesalpanpan/wmsfinalsis:backendv1
+    image: pandesalpanpan/wmsfinalsis:backendv2
     container_name: pidro-app
     depends_on:
       postgres:
@@ -37,8 +37,10 @@ services:
     restart: unless-stopped
 
   frontend:
-    image: pandesalpanpan/wmsfinalsis:frontendv1
+    image: pandesalpanpan/wmsfinalsis:frontendlocalv1
     container_name: pidro-frontend
+    environment:
+      - VITE_API_BASE_URL=http://localhost:8080
     depends_on:
       - app
     ports:

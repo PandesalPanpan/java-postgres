@@ -22,26 +22,26 @@ INSERT INTO users (username, password)
 VALUES ('admin', '$2a$10$x1eV.bwz8CInj8Sh5WXJtuXf3xWnoSqOWwyZcoAOUj9DK1aNLPyfa');
 
 -- Insert 20 Students
-INSERT INTO students (full_name) VALUES ('Juan Dela Cruz');        -- id = 1
-INSERT INTO students (full_name) VALUES ('Juanito Mozo');          -- id = 2
-INSERT INTO students (full_name) VALUES ('Peter Marticio');        -- id = 3
-INSERT INTO students (full_name) VALUES ('Dona Roldan');           -- id = 4
-INSERT INTO students (full_name) VALUES ('Luis Valdez');           -- id = 5
-INSERT INTO students (full_name) VALUES ('Maria Santos');          -- id = 6
-INSERT INTO students (full_name) VALUES ('Carlos Reyes');          -- id = 7
-INSERT INTO students (full_name) VALUES ('Ana Navarro');           -- id = 8
-INSERT INTO students (full_name) VALUES ('Miguel Torres');         -- id = 9
-INSERT INTO students (full_name) VALUES ('Sophia Lim');            -- id = 10
-INSERT INTO students (full_name) VALUES ('Daniel Cruz');           -- id = 11
-INSERT INTO students (full_name) VALUES ('Patricia Ong');          -- id = 12
-INSERT INTO students (full_name) VALUES ('Rafael Gomez');          -- id = 13
-INSERT INTO students (full_name) VALUES ('Isabella Flores');       -- id = 14
-INSERT INTO students (full_name) VALUES ('Mark Rivera');           -- id = 15
-INSERT INTO students (full_name) VALUES ('James Lee');             -- id = 16
-INSERT INTO students (full_name) VALUES ('Kristine Tan');          -- id = 17
-INSERT INTO students (full_name) VALUES ('Allan Cruz');            -- id = 18
-INSERT INTO students (full_name) VALUES ('Grace Villanueva');      -- id = 19
-INSERT INTO students (full_name) VALUES ('Henry Ramos');           -- id = 20
+INSERT INTO students (student_id, full_name) VALUES ('202600001MN0', 'Juan Dela Cruz');        -- id = 1
+INSERT INTO students (student_id, full_name) VALUES ('202600002MN0', 'Juanito Mozo');          -- id = 2
+INSERT INTO students (student_id, full_name) VALUES ('202600003MN0', 'Peter Marticio');        -- id = 3
+INSERT INTO students (student_id, full_name) VALUES ('202600004MN0', 'Dona Roldan');           -- id = 4
+INSERT INTO students (student_id, full_name) VALUES ('202600005MN0', 'Luis Valdez');           -- id = 5
+INSERT INTO students (student_id, full_name) VALUES ('202600006MN0', 'Maria Santos');          -- id = 6
+INSERT INTO students (student_id, full_name) VALUES ('202600007MN0', 'Carlos Reyes');          -- id = 7
+INSERT INTO students (student_id, full_name) VALUES ('202600008MN0', 'Ana Navarro');           -- id = 8
+INSERT INTO students (student_id, full_name) VALUES ('202600009MN0', 'Miguel Torres');         -- id = 9
+INSERT INTO students (student_id, full_name) VALUES ('202600010MN0', 'Sophia Lim');            -- id = 10
+INSERT INTO students (student_id, full_name) VALUES ('202600011MN0', 'Daniel Cruz');           -- id = 11
+INSERT INTO students (student_id, full_name) VALUES ('202600012MN0', 'Patricia Ong');          -- id = 12
+INSERT INTO students (student_id, full_name) VALUES ('202600013MN0', 'Rafael Gomez');          -- id = 13
+INSERT INTO students (student_id, full_name) VALUES ('202600014MN0', 'Isabella Flores');       -- id = 14
+INSERT INTO students (student_id, full_name) VALUES ('202600015MN0', 'Mark Rivera');           -- id = 15
+INSERT INTO students (student_id, full_name) VALUES ('202600016MN0', 'James Lee');             -- id = 16
+INSERT INTO students (student_id, full_name) VALUES ('202600017MN0', 'Kristine Tan');          -- id = 17
+INSERT INTO students (student_id, full_name) VALUES ('202600018MN0', 'Allan Cruz');            -- id = 18
+INSERT INTO students (student_id, full_name) VALUES ('202600019MN0', 'Grace Villanueva');      -- id = 19
+INSERT INTO students (student_id, full_name) VALUES ('202600020MN0', 'Henry Ramos');           -- id = 20
 
 -- Common subjects pool for variety
 -- MATH101, MATH102, SCI101, SCI102, ENG101, ENG102, FIL101, HIS101

@@ -2,6 +2,7 @@ package com.actpostgres.demo.controller;
 
 import com.actpostgres.demo.model.*;
 import com.actpostgres.demo.repository.*;
+import com.actpostgres.demo.service.StudentIdGenerator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,11 +16,14 @@ public class ViewController {
 
     private final StudentRepository studentRepository;
     private final SubjectGradeRepository subjectGradeRepository;
+    private final StudentIdGenerator studentIdGenerator;
 
     public ViewController(StudentRepository studentRepository, 
-                         SubjectGradeRepository subjectGradeRepository) {
+                         SubjectGradeRepository subjectGradeRepository,
+                         StudentIdGenerator studentIdGenerator) {
         this.studentRepository = studentRepository;
         this.subjectGradeRepository = subjectGradeRepository;
+        this.studentIdGenerator = studentIdGenerator;
     }
 
     @GetMapping
@@ -41,7 +45,8 @@ public class ViewController {
 
     @PostMapping("/students")
     public String createStudent(@RequestParam String fullName, RedirectAttributes redirectAttributes) {
-        Student student = new Student(fullName);
+        String studentId = studentIdGenerator.generateStudentId();
+        Student student = new Student(studentId, fullName);
         studentRepository.save(student);
         redirectAttributes.addFlashAttribute("message", "Student created successfully!");
         return "redirect:/";

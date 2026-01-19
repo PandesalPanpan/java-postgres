@@ -12,6 +12,9 @@ public class Student {
     @Column(updatable = false, nullable = false)
     private Long id;
 
+    @Column(name = "student_id", nullable = false, unique = true, length = 15)
+    private String studentId;
+
     @Column(nullable = false)
     private String fullName;
 
@@ -25,12 +28,25 @@ public class Student {
         this.fullName = fullName;
     }
 
+    public Student(String studentId, String fullName) {
+        this.studentId = studentId;
+        this.fullName = fullName;
+    }
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 
     public String getFullName() {

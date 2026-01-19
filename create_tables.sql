@@ -16,6 +16,7 @@ CREATE TABLE users (
 -- Create students table
 CREATE TABLE students (
     id BIGSERIAL PRIMARY KEY,
+    student_id VARCHAR(15) NOT NULL UNIQUE,
     full_name VARCHAR(255) NOT NULL
 );
 
@@ -38,3 +39,4 @@ CREATE TABLE subject_grades (
 CREATE INDEX idx_subject_grades_student_id ON subject_grades(student_id);
 CREATE INDEX idx_subject_grades_subject_code ON subject_grades(subject_code);
 CREATE INDEX idx_users_username ON users(username);
+CREATE INDEX idx_students_student_id ON students(student_id);

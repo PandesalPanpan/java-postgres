@@ -3,6 +3,7 @@ package com.actpostgres.demo.controller;
 import com.actpostgres.demo.dto.*;
 import com.actpostgres.demo.model.*;
 import com.actpostgres.demo.repository.*;
+import com.actpostgres.demo.service.StudentIdGenerator;
 import jakarta.validation.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +19,14 @@ public class StudentController {
 
     private final StudentRepository studentRepository;
     private final SubjectGradeRepository subjectGradeRepository;
+    private final StudentIdGenerator studentIdGenerator;
 
     public StudentController(StudentRepository studentRepository, 
-                             SubjectGradeRepository subjectGradeRepository) {
+                             SubjectGradeRepository subjectGradeRepository,
+                             StudentIdGenerator studentIdGenerator) {
         this.studentRepository = studentRepository;
         this.subjectGradeRepository = subjectGradeRepository;
+        this.studentIdGenerator = studentIdGenerator;
     }
 
     @GetMapping
@@ -59,7 +63,8 @@ public class StudentController {
                     }
                     
                     return new StudentResponse(
-                            student.getId(), 
+                            student.getId(),
+                            student.getStudentId(),
                             student.getFullName(), 
                             average, 
                             subjectCount
@@ -71,9 +76,10 @@ public class StudentController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public StudentResponse createStudent(@Valid @RequestBody CreateStudentRequest request) {
-        Student student = new Student(request.getFullName());
+        String studentId = studentIdGenerator.generateStudentId();
+        Student student = new Student(studentId, request.getFullName());
         Student saved = studentRepository.save(student);
-        return new StudentResponse(saved.getId(), saved.getFullName());
+        return new StudentResponse(saved.getId(), saved.getStudentId(), saved.getFullName());
     }
 
     private static final Set<BigDecimal> ALLOWED_GRADES = Set.of(
@@ -106,7 +112,40 @@ public class StudentController {
     public StudentResponse getStudent(@PathVariable Long studentId) {
         Student student = studentRepository.findById(studentId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not found"));
-        return new StudentResponse(student.getId(), student.getFullName());
+        return new StudentResponse(student.getId(), student.getStudentId(), student.getFullName());
+    }
+
+    @GetMapping("/student-id/{formattedStudentId}")
+    public StudentResponse getStudentByFormattedId(@PathVariable String formattedStudentId) {
+        // Remove dashes if present (frontend might send "2026-00001-MN-0" instead of "202600001MN0")
+        String cleanStudentId = formattedStudentId.replace("-", "");
+        
+        Student student = studentRepository.findByStudentId(cleanStudentId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not found"));
+        
+        // Calculate average and subject count
+        List<SubjectGrade> subjectGrades = subjectGradeRepository.findByStudentId(student.getId());
+        BigDecimal average = null;
+        int subjectCount = subjectGrades.size();
+        
+        if (subjectCount > 0) {
+            BigDecimal sum = subjectGrades.stream()
+                    .map(SubjectGrade::getGrade)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
+            average = sum.divide(
+                    new BigDecimal(subjectCount), 
+                    2, 
+                    RoundingMode.HALF_UP
+            );
+        }
+        
+        return new StudentResponse(
+                student.getId(),
+                student.getStudentId(),
+                student.getFullName(),
+                average,
+                subjectCount
+        );
     }
 
     @DeleteMapping("/{studentId}")
