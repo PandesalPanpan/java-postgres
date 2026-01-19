@@ -19,7 +19,7 @@ services:
       - pidro-network
 
   app:
-    image: pandesalpanpan/wmsfinalsis:backendv2
+    image: pandesalpanpan/wmsfinalsis:backendv3
     container_name: pidro-app
     depends_on:
       postgres:
