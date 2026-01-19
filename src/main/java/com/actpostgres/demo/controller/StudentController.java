@@ -27,8 +27,44 @@ public class StudentController {
 
     @GetMapping
     public List<StudentResponse> getAllStudents() {
-        return studentRepository.findAll().stream()
-                .map(s -> new StudentResponse(s.getId(), s.getFullName()))
+        // Fetch all students
+        List<Student> students = studentRepository.findAll();
+        
+        // Fetch all subject grades in one query to avoid N+1
+        List<SubjectGrade> allGrades = subjectGradeRepository.findAll();
+        
+        // Group grades by student ID for efficient lookup
+        Map<Long, List<SubjectGrade>> gradesByStudent = allGrades.stream()
+                .collect(Collectors.groupingBy(sg -> sg.getStudent().getId()));
+        
+        // Calculate average and count for each student
+        return students.stream()
+                .map(student -> {
+                    List<SubjectGrade> studentGrades = gradesByStudent.getOrDefault(
+                            student.getId(), Collections.emptyList());
+                    
+                    BigDecimal average = null;
+                    int subjectCount = studentGrades.size();
+                    
+                    if (subjectCount > 0) {
+                        // Calculate average: sum all grades and divide by count
+                        BigDecimal sum = studentGrades.stream()
+                                .map(SubjectGrade::getGrade)
+                                .reduce(BigDecimal.ZERO, BigDecimal::add);
+                        average = sum.divide(
+                                new BigDecimal(subjectCount), 
+                                2, 
+                                RoundingMode.HALF_UP
+                        );
+                    }
+                    
+                    return new StudentResponse(
+                            student.getId(), 
+                            student.getFullName(), 
+                            average, 
+                            subjectCount
+                    );
+                })
                 .collect(Collectors.toList());
     }
 
