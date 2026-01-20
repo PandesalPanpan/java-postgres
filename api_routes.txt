@@ -206,13 +206,17 @@ Expected Response (200 OK):
 [
   {
     "id": 1,
-    "fullName": "Dr. Maria Garcia"
+    "fullName": "Dr. Maria Garcia",
+    "studentCount": 15
   },
   {
     "id": 2,
-    "fullName": "Prof. John Smith"
+    "fullName": "Prof. John Smith",
+    "studentCount": 12
   }
 ]
+
+Note: studentCount represents the number of unique students the teacher is handling.
 
 ================================================================================
 9. GET TEACHER
@@ -225,8 +229,11 @@ curl -X GET http://localhost:8080/api/teachers/1
 Expected Response (200 OK):
 {
   "id": 1,
-  "fullName": "Dr. Maria Garcia"
+  "fullName": "Dr. Maria Garcia",
+  "studentCount": 15
 }
+
+Note: studentCount represents the number of unique students the teacher is handling.
 
 ================================================================================
 10. CREATE TEACHER
@@ -249,8 +256,11 @@ curl -X POST http://localhost:8080/api/teachers `
 Expected Response (201 Created):
 {
   "id": 1,
-  "fullName": "Dr. Maria Garcia"
+  "fullName": "Dr. Maria Garcia",
+  "studentCount": 0
 }
+
+Note: New teachers will have studentCount of 0 until they are assigned to subject grades.
 
 ================================================================================
 11. DELETE TEACHER
@@ -401,11 +411,13 @@ NOTES
 3. Grade values are numeric (can be decimal, e.g., 95.5) or null (ungraded)
 4. Teacher ID is optional when adding subject grades
 5. When grade is null, the subject grade exists but is ungraded (waiting for teacher to grade)
-6. All endpoints return JSON except DELETE operations (204 No Content)
-7. Make sure your Spring Boot application is running on port 8080
-8. If using a different port, update the base URL accordingly
-9. All cURL commands above are Windows-compatible (single-line format)
-10. All API endpoints are prefixed with /api (e.g., /api/students, /api/teachers, /api/subjects)
+6. Teacher responses include studentCount field showing the number of unique students the teacher handles
+7. studentCount counts distinct students - if a teacher has multiple subject grades for the same student, that student is counted only once
+8. All endpoints return JSON except DELETE operations (204 No Content)
+9. Make sure your Spring Boot application is running on port 8080
+10. If using a different port, update the base URL accordingly
+11. All cURL commands above are Windows-compatible (single-line format)
+12. All API endpoints are prefixed with /api (e.g., /api/students, /api/teachers, /api/subjects)
 
 ================================================================================
 

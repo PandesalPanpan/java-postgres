@@ -69,45 +69,45 @@ VALUES (1, 1, 'Mathematics I', 'MATH101', '1st', '2025-2026', 95);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (1, 1, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 93);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (1, 3, 'Science I', 'SCI101', '1st', '2025-2026', 88);
+VALUES (1, 4, 'Science I', 'SCI101', '1st', '2025-2026', 88);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (1, 2, 'English I', 'ENG101', '1st', '2025-2026', 92);
+VALUES (1, 6, 'English I', 'ENG101', '1st', '2025-2026', 92);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (1, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', 90);
+VALUES (1, 4, 'Filipino I', 'FIL101', '1st', '2025-2026', 90);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (1, 7, 'History I', 'HIS101', '2nd', '2025-2026', NULL);
+VALUES (1, 6, 'History I', 'HIS101', '2nd', '2025-2026', NULL);
 
 -- Insert Subject Grades for Student 2 - Juanito Mozo (7 subjects)
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (2, 1, 'Mathematics I', 'MATH101', '1st', '2025-2026', NULL);
+VALUES (2, 5, 'Mathematics I', 'MATH101', '1st', '2025-2026', NULL);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (2, 1, 'Mathematics II', 'MATH102', '2nd', '2025-2026', NULL);
+VALUES (2, 3, 'Mathematics II', 'MATH102', '2nd', '2025-2026', NULL);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (2, 3, 'Science I', 'SCI101', '1st', '2025-2026', NULL);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (2, 3, 'Science II', 'SCI102', '2nd', '2025-2026', NULL);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (2, 2, 'English I', 'ENG101', '1st', '2025-2026', NULL);
+VALUES (2, 4, 'English I', 'ENG101', '1st', '2025-2026', NULL);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (2, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', NULL);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (2, 7, 'History I', 'HIS101', '2nd', '2025-2026', NULL);
+VALUES (2, 4, 'History I', 'HIS101', '2nd', '2025-2026', NULL);
 
 -- Insert Subject Grades for Student 3 - Peter Marticio (8 subjects)
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (3, 1, 'Mathematics I', 'MATH101', '1st', '2025-2026', 98);
+VALUES (3, 7, 'Mathematics I', 'MATH101', '1st', '2025-2026', 98);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (3, 1, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 97);
+VALUES (3, 8, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 97);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (3, 3, 'Science I', 'SCI101', '1st', '2025-2026', 95);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (3, 3, 'Science II', 'SCI102', '2nd', '2025-2026', 94);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (3, 2, 'English I', 'ENG101', '1st', '2025-2026', 93);
+VALUES (3, 7, 'English I', 'ENG101', '1st', '2025-2026', 93);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (3, 2, 'English II', 'ENG102', '2nd', '2025-2026', 92);
+VALUES (3, 8, 'English II', 'ENG102', '2nd', '2025-2026', 92);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (3, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', 91);
+VALUES (3, 7, 'Filipino I', 'FIL101', '1st', '2025-2026', 91);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (3, 7, 'History I', 'HIS101', '2nd', '2025-2026', 94);
 
@@ -115,123 +115,123 @@ VALUES (3, 7, 'History I', 'HIS101', '2nd', '2025-2026', 94);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (4, 1, 'Mathematics I', 'MATH101', '1st', '2025-2026', 90);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (4, 3, 'Science I', 'SCI101', '1st', '2025-2026', 92);
+VALUES (4, 4, 'Science I', 'SCI101', '1st', '2025-2026', 92);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (4, 3, 'Science II', 'SCI102', '2nd', '2025-2026', 91);
+VALUES (4, 6, 'Science II', 'SCI102', '2nd', '2025-2026', 91);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (4, 2, 'English I', 'ENG101', '1st', '2025-2026', 95);
+VALUES (4, 4, 'English I', 'ENG101', '1st', '2025-2026', 95);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (4, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', 93);
+VALUES (4, 1, 'Filipino I', 'FIL101', '1st', '2025-2026', 93);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (4, 7, 'History I', 'HIS101', '2nd', '2025-2026', 88);
+VALUES (4, 6, 'History I', 'HIS101', '2nd', '2025-2026', 88);
 
 -- Insert Subject Grades for Student 5 - Luis Valdez (7 subjects)
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (5, 1, 'Mathematics I', 'MATH101', '1st', '2025-2026', 87);
+VALUES (5, 2, 'Mathematics I', 'MATH101', '1st', '2025-2026', 87);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (5, 1, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 86);
+VALUES (5, 7, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 86);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (5, 3, 'Science I', 'SCI101', '1st', '2025-2026', 85);
+VALUES (5, 8, 'Science I', 'SCI101', '1st', '2025-2026', 85);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (5, 2, 'English I', 'ENG101', '1st', '2025-2026', 90);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (5, 2, 'English II', 'ENG102', '2nd', '2025-2026', 89);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (5, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', 88);
+VALUES (5, 7, 'Filipino I', 'FIL101', '1st', '2025-2026', 88);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (5, 7, 'History I', 'HIS101', '2nd', '2025-2026', 86);
 
 -- Insert Subject Grades for Student 6 - Maria Santos (6 subjects)
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (6, 1, 'Mathematics I', 'MATH101', '1st', '2025-2026', 89);
+VALUES (6, 3, 'Mathematics I', 'MATH101', '1st', '2025-2026', 89);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (6, 1, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 90);
+VALUES (6, 4, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 90);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (6, 3, 'Science I', 'SCI101', '1st', '2025-2026', 87);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (6, 2, 'English I', 'ENG101', '1st', '2025-2026', 93);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (6, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', 92);
+VALUES (6, 4, 'Filipino I', 'FIL101', '1st', '2025-2026', 92);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (6, 7, 'History I', 'HIS101', '2nd', '2025-2026', 88);
+VALUES (6, 2, 'History I', 'HIS101', '2nd', '2025-2026', 88);
 
 -- Insert Subject Grades for Student 7 - Carlos Reyes (7 subjects)
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (7, 1, 'Mathematics I', 'MATH101', '1st', '2025-2026', 82);
+VALUES (7, 8, 'Mathematics I', 'MATH101', '1st', '2025-2026', 82);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (7, 1, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 84);
+VALUES (7, 6, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 84);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (7, 3, 'Science I', 'SCI101', '1st', '2025-2026', 80);
+VALUES (7, 5, 'Science I', 'SCI101', '1st', '2025-2026', 80);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (7, 3, 'Science II', 'SCI102', '2nd', '2025-2026', 83);
+VALUES (7, 8, 'Science II', 'SCI102', '2nd', '2025-2026', 83);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (7, 2, 'English I', 'ENG101', '1st', '2025-2026', 85);
+VALUES (7, 6, 'English I', 'ENG101', '1st', '2025-2026', 85);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (7, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', 87);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (7, 7, 'History I', 'HIS101', '2nd', '2025-2026', 81);
+VALUES (7, 8, 'History I', 'HIS101', '2nd', '2025-2026', 81);
 
 -- Insert Subject Grades for Student 8 - Ana Navarro (8 subjects)
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (8, 1, 'Mathematics I', 'MATH101', '1st', '2025-2026', 91);
+VALUES (8, 6, 'Mathematics I', 'MATH101', '1st', '2025-2026', 91);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (8, 1, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 92);
+VALUES (8, 5, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 92);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (8, 3, 'Science I', 'SCI101', '1st', '2025-2026', 89);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (8, 3, 'Science II', 'SCI102', '2nd', '2025-2026', 90);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (8, 2, 'English I', 'ENG101', '1st', '2025-2026', 94);
+VALUES (8, 6, 'English I', 'ENG101', '1st', '2025-2026', 94);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (8, 2, 'English II', 'ENG102', '2nd', '2025-2026', 93);
+VALUES (8, 5, 'English II', 'ENG102', '2nd', '2025-2026', 93);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (8, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', 92);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (8, 7, 'History I', 'HIS101', '2nd', '2025-2026', 90);
+VALUES (8, 6, 'History I', 'HIS101', '2nd', '2025-2026', 90);
 
 -- Insert Subject Grades for Student 9 - Miguel Torres (6 subjects)
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (9, 1, 'Mathematics I', 'MATH101', '1st', '2025-2026', 76);
+VALUES (9, 6, 'Mathematics I', 'MATH101', '1st', '2025-2026', 76);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (9, 1, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 78);
+VALUES (9, 8, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 78);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (9, 3, 'Science I', 'SCI101', '1st', '2025-2026', 80);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (9, 2, 'English I', 'ENG101', '1st', '2025-2026', 82);
+VALUES (9, 6, 'English I', 'ENG101', '1st', '2025-2026', 82);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (9, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', 79);
+VALUES (9, 8, 'Filipino I', 'FIL101', '1st', '2025-2026', 79);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (9, 7, 'History I', 'HIS101', '2nd', '2025-2026', 81);
+VALUES (9, 3, 'History I', 'HIS101', '2nd', '2025-2026', 81);
 
 -- Insert Subject Grades for Student 10 - Sophia Lim (7 subjects)
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (10, 1, 'Mathematics I', 'MATH101', '1st', '2025-2026', 93);
+VALUES (10, 2, 'Mathematics I', 'MATH101', '1st', '2025-2026', 93);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (10, 1, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 94);
+VALUES (10, 7, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 94);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (10, 3, 'Science I', 'SCI101', '1st', '2025-2026', 92);
+VALUES (10, 8, 'Science I', 'SCI101', '1st', '2025-2026', 92);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (10, 2, 'English I', 'ENG101', '1st', '2025-2026', 95);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (10, 2, 'English II', 'ENG102', '2nd', '2025-2026', 96);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (10, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', 91);
+VALUES (10, 7, 'Filipino I', 'FIL101', '1st', '2025-2026', 91);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (10, 7, 'History I', 'HIS101', '2nd', '2025-2026', 90);
 
 -- Insert Subject Grades for Student 11 - Daniel Cruz (6 subjects)
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (11, 1, 'Mathematics I', 'MATH101', '1st', '2025-2026', 88);
+VALUES (11, 5, 'Mathematics I', 'MATH101', '1st', '2025-2026', 88);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (11, 1, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 86);
+VALUES (11, 4, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 86);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (11, 3, 'Science I', 'SCI101', '1st', '2025-2026', 87);
+VALUES (11, 6, 'Science I', 'SCI101', '1st', '2025-2026', 87);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (11, 2, 'English I', 'ENG101', '1st', '2025-2026', 89);
+VALUES (11, 5, 'English I', 'ENG101', '1st', '2025-2026', 89);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (11, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', 90);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (11, 7, 'History I', 'HIS101', '2nd', '2025-2026', 85);
+VALUES (11, 4, 'History I', 'HIS101', '2nd', '2025-2026', 85);
 
 -- Insert Subject Grades for Student 12 - Patricia Ong (7 subjects)
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
@@ -239,11 +239,11 @@ VALUES (12, 1, 'Mathematics I', 'MATH101', '1st', '2025-2026', 91);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (12, 1, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 89);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (12, 3, 'Science I', 'SCI101', '1st', '2025-2026', 93);
+VALUES (12, 7, 'Science I', 'SCI101', '1st', '2025-2026', 93);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (12, 2, 'English I', 'ENG101', '1st', '2025-2026', 94);
+VALUES (12, 5, 'English I', 'ENG101', '1st', '2025-2026', 94);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (12, 2, 'English II', 'ENG102', '2nd', '2025-2026', 92);
+VALUES (12, 7, 'English II', 'ENG102', '2nd', '2025-2026', 92);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (12, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', 90);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
@@ -251,19 +251,19 @@ VALUES (12, 7, 'History I', 'HIS101', '2nd', '2025-2026', 88);
 
 -- Insert Subject Grades for Student 13 - Rafael Gomez (8 subjects)
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (13, 1, 'Mathematics I', 'MATH101', '1st', '2025-2026', 84);
+VALUES (13, 8, 'Mathematics I', 'MATH101', '1st', '2025-2026', 84);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (13, 1, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 86);
+VALUES (13, 7, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 86);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (13, 3, 'Science I', 'SCI101', '1st', '2025-2026', 83);
+VALUES (13, 2, 'Science I', 'SCI101', '1st', '2025-2026', 83);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (13, 3, 'Science II', 'SCI102', '2nd', '2025-2026', 85);
+VALUES (13, 8, 'Science II', 'SCI102', '2nd', '2025-2026', 85);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (13, 2, 'English I', 'ENG101', '1st', '2025-2026', 87);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (13, 2, 'English II', 'ENG102', '2nd', '2025-2026', 88);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (13, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', 86);
+VALUES (13, 7, 'Filipino I', 'FIL101', '1st', '2025-2026', 86);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (13, 7, 'History I', 'HIS101', '2nd', '2025-2026', 84);
 
@@ -275,17 +275,17 @@ VALUES (14, 1, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 94);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (14, 3, 'Science I', 'SCI101', '1st', '2025-2026', 91);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (14, 2, 'English I', 'ENG101', '1st', '2025-2026', 95);
+VALUES (14, 6, 'English I', 'ENG101', '1st', '2025-2026', 95);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (14, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', 93);
+VALUES (14, 6, 'Filipino I', 'FIL101', '1st', '2025-2026', 93);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (14, 7, 'History I', 'HIS101', '2nd', '2025-2026', 90);
+VALUES (14, 3, 'History I', 'HIS101', '2nd', '2025-2026', 90);
 
 -- Insert Subject Grades for Student 15 - Mark Rivera (7 subjects)
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (15, 1, 'Mathematics I', 'MATH101', '1st', '2025-2026', NULL);
+VALUES (15, 3, 'Mathematics I', 'MATH101', '1st', '2025-2026', NULL);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (15, 1, 'Mathematics II', 'MATH102', '2nd', '2025-2026', NULL);
+VALUES (15, 2, 'Mathematics II', 'MATH102', '2nd', '2025-2026', NULL);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (15, 3, 'Science I', 'SCI101', '1st', '2025-2026', NULL);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
@@ -293,9 +293,9 @@ VALUES (15, 3, 'Science II', 'SCI102', '2nd', '2025-2026', NULL);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (15, 2, 'English I', 'ENG101', '1st', '2025-2026', NULL);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (15, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', NULL);
+VALUES (15, 6, 'Filipino I', 'FIL101', '1st', '2025-2026', NULL);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (15, 7, 'History I', 'HIS101', '2nd', '2025-2026', NULL);
+VALUES (15, 6, 'History I', 'HIS101', '2nd', '2025-2026', NULL);
 
 -- Insert Subject Grades for Student 16 - James Lee (8 subjects)
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
@@ -303,47 +303,47 @@ VALUES (16, 1, 'Mathematics I', 'MATH101', '1st', '2025-2026', 88);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (16, 1, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 90);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (16, 3, 'Science I', 'SCI101', '1st', '2025-2026', 87);
+VALUES (16, 2, 'Science I', 'SCI101', '1st', '2025-2026', 87);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (16, 3, 'Science II', 'SCI102', '2nd', '2025-2026', 89);
+VALUES (16, 8, 'Science II', 'SCI102', '2nd', '2025-2026', 89);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (16, 2, 'English I', 'ENG101', '1st', '2025-2026', 91);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (16, 2, 'English II', 'ENG102', '2nd', '2025-2026', 92);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (16, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', 90);
+VALUES (16, 8, 'Filipino I', 'FIL101', '1st', '2025-2026', 90);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (16, 7, 'History I', 'HIS101', '2nd', '2025-2026', 88);
+VALUES (16, 1, 'History I', 'HIS101', '2nd', '2025-2026', 88);
 
 -- Insert Subject Grades for Student 17 - Kristine Tan (6 subjects)
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (17, 1, 'Mathematics I', 'MATH101', '1st', '2025-2026', 94);
+VALUES (17, 7, 'Mathematics I', 'MATH101', '1st', '2025-2026', 94);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (17, 1, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 95);
+VALUES (17, 3, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 95);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (17, 3, 'Science I', 'SCI101', '1st', '2025-2026', 93);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (17, 2, 'English I', 'ENG101', '1st', '2025-2026', 96);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (17, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', 94);
+VALUES (17, 7, 'Filipino I', 'FIL101', '1st', '2025-2026', 94);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (17, 7, 'History I', 'HIS101', '2nd', '2025-2026', 92);
 
 -- Insert Subject Grades for Student 18 - Allan Cruz (7 subjects)
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (18, 1, 'Mathematics I', 'MATH101', '1st', '2025-2026', 81);
+VALUES (18, 5, 'Mathematics I', 'MATH101', '1st', '2025-2026', 81);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (18, 1, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 82);
+VALUES (18, 4, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 82);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (18, 3, 'Science I', 'SCI101', '1st', '2025-2026', 80);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (18, 3, 'Science II', 'SCI102', '2nd', '2025-2026', 83);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (18, 2, 'English I', 'ENG101', '1st', '2025-2026', 84);
+VALUES (18, 5, 'English I', 'ENG101', '1st', '2025-2026', 84);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (18, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', 82);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (18, 7, 'History I', 'HIS101', '2nd', '2025-2026', 81);
+VALUES (18, 4, 'History I', 'HIS101', '2nd', '2025-2026', 81);
 
 -- Insert Subject Grades for Student 19 - Grace Villanueva (8 subjects)
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
@@ -351,31 +351,31 @@ VALUES (19, 1, 'Mathematics I', 'MATH101', '1st', '2025-2026', 90);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (19, 1, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 92);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (19, 3, 'Science I', 'SCI101', '1st', '2025-2026', 89);
+VALUES (19, 8, 'Science I', 'SCI101', '1st', '2025-2026', 89);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (19, 3, 'Science II', 'SCI102', '2nd', '2025-2026', 91);
+VALUES (19, 5, 'Science II', 'SCI102', '2nd', '2025-2026', 91);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (19, 2, 'English I', 'ENG101', '1st', '2025-2026', 93);
+VALUES (19, 8, 'English I', 'ENG101', '1st', '2025-2026', 93);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (19, 2, 'English II', 'ENG102', '2nd', '2025-2026', 94);
+VALUES (19, 5, 'English II', 'ENG102', '2nd', '2025-2026', 94);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (19, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', 92);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (19, 7, 'History I', 'HIS101', '2nd', '2025-2026', 90);
+VALUES (19, 8, 'History I', 'HIS101', '2nd', '2025-2026', 90);
 
 -- Insert Subject Grades for Student 20 - Henry Ramos (6 subjects)
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (20, 1, 'Mathematics I', 'MATH101', '1st', '2025-2026', 78);
+VALUES (20, 3, 'Mathematics I', 'MATH101', '1st', '2025-2026', 78);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (20, 1, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 79);
+VALUES (20, 5, 'Mathematics II', 'MATH102', '2nd', '2025-2026', 79);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (20, 3, 'Science I', 'SCI101', '1st', '2025-2026', 77);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (20, 2, 'English I', 'ENG101', '1st', '2025-2026', 80);
+VALUES (20, 6, 'English I', 'ENG101', '1st', '2025-2026', 80);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
 VALUES (20, 5, 'Filipino I', 'FIL101', '1st', '2025-2026', 81);
 INSERT INTO subject_grades (student_id, teacher_id, subject_name, subject_code, semester, school_year, grade)
-VALUES (20, 7, 'History I', 'HIS101', '2nd', '2025-2026', 79);
+VALUES (20, 6, 'History I', 'HIS101', '2nd', '2025-2026', 79);
 
 -- SELECT s.id, s.full_name, COUNT(sg.id) as subject_count 
 -- FROM students s 

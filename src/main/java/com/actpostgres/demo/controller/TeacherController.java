@@ -15,15 +15,21 @@ import java.util.stream.*;
 public class TeacherController {
 
     private final TeacherRepository teacherRepository;
+    private final SubjectGradeRepository subjectGradeRepository;
 
-    public TeacherController(TeacherRepository teacherRepository) {
+    public TeacherController(TeacherRepository teacherRepository, 
+                            SubjectGradeRepository subjectGradeRepository) {
         this.teacherRepository = teacherRepository;
+        this.subjectGradeRepository = subjectGradeRepository;
     }
 
     @GetMapping
     public List<TeacherResponse> getAllTeachers() {
         return teacherRepository.findAll().stream()
-                .map(teacher -> new TeacherResponse(teacher.getId(), teacher.getFullName()))
+                .map(teacher -> {
+                    Long studentCount = subjectGradeRepository.countDistinctStudentsByTeacherId(teacher.getId());
+                    return new TeacherResponse(teacher.getId(), teacher.getFullName(), studentCount);
+                })
                 .collect(Collectors.toList());
     }
 
@@ -31,7 +37,8 @@ public class TeacherController {
     public TeacherResponse getTeacher(@PathVariable Long teacherId) {
         Teacher teacher = teacherRepository.findById(teacherId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Teacher not found"));
-        return new TeacherResponse(teacher.getId(), teacher.getFullName());
+        Long studentCount = subjectGradeRepository.countDistinctStudentsByTeacherId(teacherId);
+        return new TeacherResponse(teacher.getId(), teacher.getFullName(), studentCount);
     }
 
     @PostMapping
@@ -39,7 +46,7 @@ public class TeacherController {
     public TeacherResponse createTeacher(@Valid @RequestBody CreateTeacherRequest request) {
         Teacher teacher = new Teacher(request.getFullName());
         Teacher saved = teacherRepository.save(teacher);
-        return new TeacherResponse(saved.getId(), saved.getFullName());
+        return new TeacherResponse(saved.getId(), saved.getFullName(), 0L);
     }
 
     @DeleteMapping("/{teacherId}")
