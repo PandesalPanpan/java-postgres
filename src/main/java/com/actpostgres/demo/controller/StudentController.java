@@ -19,13 +19,16 @@ public class StudentController {
 
     private final StudentRepository studentRepository;
     private final SubjectGradeRepository subjectGradeRepository;
+    private final TeacherRepository teacherRepository;
     private final StudentIdGenerator studentIdGenerator;
 
     public StudentController(StudentRepository studentRepository, 
                              SubjectGradeRepository subjectGradeRepository,
+                             TeacherRepository teacherRepository,
                              StudentIdGenerator studentIdGenerator) {
         this.studentRepository = studentRepository;
         this.subjectGradeRepository = subjectGradeRepository;
+        this.teacherRepository = teacherRepository;
         this.studentIdGenerator = studentIdGenerator;
     }
 
@@ -50,13 +53,18 @@ public class StudentController {
                     BigDecimal average = null;
                     int subjectCount = studentGrades.size();
                     
-                    if (subjectCount > 0) {
-                        // Calculate average: sum all grades and divide by count
-                        BigDecimal sum = studentGrades.stream()
-                                .map(SubjectGrade::getGrade)
+                    // Filter out null grades for average calculation
+                    List<BigDecimal> nonNullGrades = studentGrades.stream()
+                            .map(SubjectGrade::getGrade)
+                            .filter(g -> g != null)
+                            .collect(Collectors.toList());
+                    
+                    if (!nonNullGrades.isEmpty()) {
+                        // Calculate average: sum all non-null grades and divide by count
+                        BigDecimal sum = nonNullGrades.stream()
                                 .reduce(BigDecimal.ZERO, BigDecimal::add);
                         average = sum.divide(
-                                new BigDecimal(subjectCount), 
+                                new BigDecimal(nonNullGrades.size()), 
                                 2, 
                                 RoundingMode.HALF_UP
                         );
@@ -96,15 +104,15 @@ public class StudentController {
     );
 
     private void validateGrade(BigDecimal grade) {
-        if (grade == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Grade is required");
-        }
-        BigDecimal normalized = grade.setScale(2, RoundingMode.HALF_UP);
-        if (!ALLOWED_GRADES.contains(normalized)) {
-            throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST,
-                    "Invalid grade. Allowed values: 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 5"
-            );
+        // Grade can be null (empty/ungraded)
+        if (grade != null) {
+            BigDecimal normalized = grade.setScale(2, RoundingMode.HALF_UP);
+            if (!ALLOWED_GRADES.contains(normalized)) {
+                throw new ResponseStatusException(
+                        HttpStatus.BAD_REQUEST,
+                        "Invalid grade. Allowed values: 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 5"
+                );
+            }
         }
     }
 
@@ -128,12 +136,17 @@ public class StudentController {
         BigDecimal average = null;
         int subjectCount = subjectGrades.size();
         
-        if (subjectCount > 0) {
-            BigDecimal sum = subjectGrades.stream()
-                    .map(SubjectGrade::getGrade)
+        // Filter out null grades for average calculation
+        List<BigDecimal> nonNullGrades = subjectGrades.stream()
+                .map(SubjectGrade::getGrade)
+                .filter(g -> g != null)
+                .collect(Collectors.toList());
+        
+        if (!nonNullGrades.isEmpty()) {
+            BigDecimal sum = nonNullGrades.stream()
                     .reduce(BigDecimal.ZERO, BigDecimal::add);
             average = sum.divide(
-                    new BigDecimal(subjectCount), 
+                    new BigDecimal(nonNullGrades.size()), 
                     2, 
                     RoundingMode.HALF_UP
             );
@@ -164,10 +177,17 @@ public class StudentController {
         Student student = studentRepository.findById(studentId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not found"));
 
+        Teacher teacher = null;
+        if (request.getTeacherId() != null) {
+            teacher = teacherRepository.findById(request.getTeacherId())
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Teacher not found"));
+        }
+
         validateGrade(request.getGrade());
 
         SubjectGrade subjectGrade = new SubjectGrade(
                 student,
+                teacher,
                 request.getSubjectName(),
                 request.getSubjectCode(),
                 request.getSemester(),
@@ -182,7 +202,8 @@ public class StudentController {
                 saved.getSubjectCode(),
                 saved.getSemester(),
                 saved.getSchoolYear(),
-                saved.getGrade()
+                saved.getGrade(),
+                saved.getTeacher() != null ? saved.getTeacher().getFullName() : null
         );
     }
 
@@ -199,7 +220,8 @@ public class StudentController {
                         sg.getSubjectCode(),
                         sg.getSemester(),
                         sg.getSchoolYear(),
-                        sg.getGrade()
+                        sg.getGrade(),
+                        sg.getTeacher() != null ? sg.getTeacher().getFullName() : null
                 ))
                 .collect(Collectors.toList());
 

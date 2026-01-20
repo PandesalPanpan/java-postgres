@@ -18,6 +18,11 @@ public class SubjectGrade {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Student student;
 
+    @ManyToOne
+    @JoinColumn(name = "teacher_id", nullable = true)
+    @OnDelete(action = OnDeleteAction.SET_NULL)
+    private Teacher teacher;
+
     @Column(nullable = false)
     private String subjectName;
 
@@ -30,15 +35,16 @@ public class SubjectGrade {
     @Column(nullable = false)
     private String schoolYear;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private BigDecimal grade;
 
     public SubjectGrade() {
     }
 
-    public SubjectGrade(Student student, String subjectName, String subjectCode, 
+    public SubjectGrade(Student student, Teacher teacher, String subjectName, String subjectCode, 
                        String semester, String schoolYear, BigDecimal grade) {
         this.student = student;
+        this.teacher = teacher;
         this.subjectName = subjectName;
         this.subjectCode = subjectCode;
         this.semester = semester;
@@ -100,6 +106,14 @@ public class SubjectGrade {
 
     public void setGrade(BigDecimal grade) {
         this.grade = grade;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 }
 

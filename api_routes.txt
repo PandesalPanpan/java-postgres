@@ -16,15 +16,15 @@ Request Body:
 }
 
 Example cURL (Windows - Single Line):
-curl -X POST http://localhost:8080/students -H "Content-Type: application/json" -d "{\"full_name\": \"Juan Dela Cruz\"}"
+curl -X POST http://localhost:8080/api/students -H "Content-Type: application/json" -d "{\"full_name\": \"Juan Dela Cruz\"}"
 
 PowerShell (Multi-line with backticks):
-curl -X POST http://localhost:8080/students `
+curl -X POST http://localhost:8080/api/students `
   -H "Content-Type: application/json" `
   -d "{\"full_name\": \"Juan Dela Cruz\"}"
 
 CMD (Multi-line with ^):
-curl -X POST http://localhost:8080/students ^
+curl -X POST http://localhost:8080/api/students ^
   -H "Content-Type: application/json" ^
   -d "{\"full_name\": \"Juan Dela Cruz\"}"
 
@@ -53,7 +53,7 @@ Expected Response (200 OK):
 ================================================================================
 3. ADD SUBJECT GRADE
 ================================================================================
-POST /students/{studentId}/subjects
+POST /api/students/{studentId}/subjects
 
 Request Body:
 {
@@ -61,16 +61,19 @@ Request Body:
   "subject_code": "MATH101",
   "semester": "1st",
   "school_year": "2025-2026",
+  "teacher_id": 1,
   "grade": 95
 }
 
+Note: teacher_id and grade are optional. If grade is null, the subject grade is ungraded.
+
 Example cURL (Windows - Single Line):
-curl -X POST http://localhost:8080/students/1/subjects -H "Content-Type: application/json" -d "{\"subject_name\": \"Mathematics\", \"subject_code\": \"MATH101\", \"semester\": \"1st\", \"school_year\": \"2025-2026\", \"grade\": 95}"
+curl -X POST http://localhost:8080/api/students/1/subjects -H "Content-Type: application/json" -d "{\"subject_name\": \"Mathematics\", \"subject_code\": \"MATH101\", \"semester\": \"1st\", \"school_year\": \"2025-2026\", \"teacher_id\": 1, \"grade\": 95}"
 
 PowerShell (Multi-line):
-curl -X POST http://localhost:8080/students/1/subjects `
+curl -X POST http://localhost:8080/api/students/1/subjects `
   -H "Content-Type: application/json" `
-  -d "{\"subject_name\": \"Mathematics\", \"subject_code\": \"MATH101\", \"semester\": \"1st\", \"school_year\": \"2025-2026\", \"grade\": 95}"
+  -d "{\"subject_name\": \"Mathematics\", \"subject_code\": \"MATH101\", \"semester\": \"1st\", \"school_year\": \"2025-2026\", \"teacher_id\": 1, \"grade\": 95}"
 
 Expected Response (201 Created):
 {
@@ -78,26 +81,30 @@ Expected Response (201 Created):
   "subjectCode": "MATH101",
   "semester": "1st",
   "schoolYear": "2025-2026",
-  "grade": 95
+  "grade": 95,
+  "teacherName": "Dr. Maria Garcia"
 }
+
+Example: Add subject without grade (ungraded):
+curl -X POST http://localhost:8080/api/students/1/subjects -H "Content-Type: application/json" -d "{\"subject_name\": \"Science\", \"subject_code\": \"SCI101\", \"semester\": \"1st\", \"school_year\": \"2025-2026\", \"teacher_id\": 3}"
 
 Note: You can add multiple subjects for the same student.
 
 Additional Examples:
 
-Science Subject (Single Line):
-curl -X POST http://localhost:8080/students/1/subjects -H "Content-Type: application/json" -d "{\"subject_name\": \"Science\", \"subject_code\": \"SCI101\", \"semester\": \"1st\", \"school_year\": \"2025-2026\", \"grade\": 88}"
+Science Subject with Teacher (Single Line):
+curl -X POST http://localhost:8080/api/students/1/subjects -H "Content-Type: application/json" -d "{\"subject_name\": \"Science\", \"subject_code\": \"SCI101\", \"semester\": \"1st\", \"school_year\": \"2025-2026\", \"teacher_id\": 3, \"grade\": 88}"
 
-English Subject (Single Line):
-curl -X POST http://localhost:8080/students/1/subjects -H "Content-Type: application/json" -d "{\"subject_name\": \"English\", \"subject_code\": \"ENG101\", \"semester\": \"1st\", \"school_year\": \"2025-2026\", \"grade\": 92}"
+English Subject with Teacher (Single Line):
+curl -X POST http://localhost:8080/api/students/1/subjects -H "Content-Type: application/json" -d "{\"subject_name\": \"English\", \"subject_code\": \"ENG101\", \"semester\": \"1st\", \"school_year\": \"2025-2026\", \"teacher_id\": 2, \"grade\": 92}"
 
 ================================================================================
 4. GET STUDENT GRADE SHEET
 ================================================================================
-GET /students/{studentId}/grades
+GET /api/students/{studentId}/grades
 
 Example cURL:
-curl -X GET http://localhost:8080/students/1/grades
+curl -X GET http://localhost:8080/api/students/1/grades
 
 Expected Response (200 OK):
 {
@@ -108,24 +115,29 @@ Expected Response (200 OK):
       "subjectCode": "MATH101",
       "semester": "1st",
       "schoolYear": "2025-2026",
-      "grade": 95
+      "grade": 95,
+      "teacherName": "Dr. Maria Garcia"
     },
     {
       "subjectName": "Science",
       "subjectCode": "SCI101",
       "semester": "1st",
       "schoolYear": "2025-2026",
-      "grade": 88
+      "grade": 88,
+      "teacherName": "Dr. Anna Rodriguez"
     },
     {
       "subjectName": "English",
       "subjectCode": "ENG101",
       "semester": "1st",
       "schoolYear": "2025-2026",
-      "grade": 92
+      "grade": null,
+      "teacherName": "Prof. John Smith"
     }
   ]
 }
+
+Note: grade can be null if the subject is not yet graded. teacherName can also be null if no teacher is assigned.
 
 ================================================================================
 5. UPDATE GRADE
@@ -138,10 +150,10 @@ Request Body:
 }
 
 Example cURL (Windows - Single Line):
-curl -X PATCH http://localhost:8080/subjects/1 -H "Content-Type: application/json" -d "{\"grade\": 97}"
+curl -X PATCH http://localhost:8080/api/subjects/1 -H "Content-Type: application/json" -d "{\"grade\": 97}"
 
 PowerShell (Multi-line):
-curl -X PATCH http://localhost:8080/subjects/1 `
+curl -X PATCH http://localhost:8080/api/subjects/1 `
   -H "Content-Type: application/json" `
   -d "{\"grade\": 97}"
 
@@ -151,15 +163,17 @@ Expected Response (200 OK):
   "subjectCode": "MATH101",
   "semester": "1st",
   "schoolYear": "2025-2026",
-  "grade": 97
+  "grade": 97,
+  "teacherName": "Dr. Maria Garcia"
 }
 
 Note: Use the subject grade ID from the grade sheet response or from the add subject response.
+Note: grade can be set to null to mark as ungraded, or updated with a valid grade value.
 
 ================================================================================
 6. DELETE SUBJECT GRADE
 ================================================================================
-DELETE /subjects/{subjectGradeId}
+DELETE /api/subjects/{subjectGradeId}
 
 Example cURL:
 curl -X DELETE http://localhost:8080/subjects/1
@@ -173,7 +187,7 @@ Expected Response (204 No Content):
 DELETE /students/{studentId}
 
 Example cURL:
-curl -X DELETE http://localhost:8080/students/1
+curl -X DELETE http://localhost:8080/api/students/1
 
 Expected Response (204 No Content):
 (No response body)
@@ -181,23 +195,102 @@ Expected Response (204 No Content):
 Note: This will also delete all associated subject grades (CASCADE DELETE).
 
 ================================================================================
+8. GET ALL TEACHERS
+================================================================================
+GET /teachers
+
+Example cURL:
+curl -X GET http://localhost:8080/api/teachers
+
+Expected Response (200 OK):
+[
+  {
+    "id": 1,
+    "fullName": "Dr. Maria Garcia"
+  },
+  {
+    "id": 2,
+    "fullName": "Prof. John Smith"
+  }
+]
+
+================================================================================
+9. GET TEACHER
+================================================================================
+GET /teachers/{teacherId}
+
+Example cURL:
+curl -X GET http://localhost:8080/api/teachers/1
+
+Expected Response (200 OK):
+{
+  "id": 1,
+  "fullName": "Dr. Maria Garcia"
+}
+
+================================================================================
+10. CREATE TEACHER
+================================================================================
+POST /teachers
+
+Request Body:
+{
+  "full_name": "Dr. Maria Garcia"
+}
+
+Example cURL (Windows - Single Line):
+curl -X POST http://localhost:8080/api/teachers -H "Content-Type: application/json" -d "{\"full_name\": \"Dr. Maria Garcia\"}"
+
+PowerShell (Multi-line):
+curl -X POST http://localhost:8080/api/teachers `
+  -H "Content-Type: application/json" `
+  -d "{\"full_name\": \"Dr. Maria Garcia\"}"
+
+Expected Response (201 Created):
+{
+  "id": 1,
+  "fullName": "Dr. Maria Garcia"
+}
+
+================================================================================
+11. DELETE TEACHER
+================================================================================
+DELETE /teachers/{teacherId}
+
+Example cURL:
+curl -X DELETE http://localhost:8080/api/teachers/1
+
+Expected Response (204 No Content):
+(No response body)
+
+Note: This will set teacher_id to NULL for all associated subject grades (SET NULL on delete).
+
+================================================================================
 TESTING WORKFLOW EXAMPLE
 ================================================================================
 
 Step 1: Create a student
-POST /students
+POST /api/students
 {
   "full_name": "Maria Santos"
 }
 Response: Save the student ID (e.g., 1)
 
-Step 2: Add multiple subjects
-POST /students/1/subjects
+Step 2: Create teachers (optional, if not already in database)
+POST /api/teachers
+{
+  "full_name": "Dr. Maria Garcia"
+}
+Response: Save the teacher ID (e.g., 1)
+
+Step 3: Add multiple subjects (with teachers and grades)
+POST /api/students/1/subjects
 {
   "subject_name": "Mathematics",
   "subject_code": "MATH101",
   "semester": "1st",
   "school_year": "2025-2026",
+  "teacher_id": 1,
   "grade": 95
 }
 
@@ -207,26 +300,37 @@ POST /students/1/subjects
   "subject_code": "SCI101",
   "semester": "1st",
   "school_year": "2025-2026",
-  "grade": 88
+  "teacher_id": 3
 }
 
-Step 3: View the grade sheet
-GET /students/1/grades
+Note: Second subject has no grade - it's ungraded and waiting for teacher to grade.
 
-Step 4: Update a grade (use subject grade ID from step 3, e.g., 1)
-PATCH /subjects/1
+Step 4: View the grade sheet
+GET /api/students/1/grades
+
+Step 5: Update a grade (use subject grade ID from step 4, e.g., 1)
+PATCH /api/subjects/1
 {
   "grade": 97
 }
 
-Step 5: View updated grade sheet
-GET /students/1/grades
+Or set grade to NULL to mark as ungraded:
+PATCH /api/subjects/2
+{
+  "grade": null
+}
 
-Step 6: Delete a subject grade
-DELETE /subjects/1
+Step 6: View updated grade sheet
+GET /api/students/1/grades
 
-Step 7: Delete the student (this will delete all remaining subject grades)
-DELETE /students/1
+Step 7: Delete a subject grade
+DELETE /api/subjects/1
+
+Step 8: Delete the student (this will delete all remaining subject grades)
+DELETE /api/students/1
+
+Step 9: Delete a teacher (this will set teacher_id to NULL for associated subject grades)
+DELETE /api/teachers/1
 
 ================================================================================
 ERROR RESPONSES
@@ -268,7 +372,7 @@ http POST localhost:8080/students full_name="Juan Dela Cruz"
 
 http GET localhost:8080/students/1
 
-http POST localhost:8080/students/1/subjects subject_name="Mathematics" subject_code="MATH101" semester="1st" school_year="2025-2026" grade:=95
+http POST localhost:8080/api/students/1/subjects subject_name="Mathematics" subject_code="MATH101" semester="1st" school_year="2025-2026" teacher_id:=1 grade:=95
 
 http GET localhost:8080/students/1/grades
 
@@ -294,11 +398,14 @@ NOTES
 
 1. Replace IDs in examples with actual numeric IDs from your responses
 2. All IDs are numeric (Long type, e.g., 1, 2, 3, etc.)
-3. Grade values are numeric (can be decimal, e.g., 95.5)
-4. All endpoints return JSON except DELETE operations (204 No Content)
-5. Make sure your Spring Boot application is running on port 8080
-6. If using a different port, update the base URL accordingly
-7. All cURL commands above are Windows-compatible (single-line format)
+3. Grade values are numeric (can be decimal, e.g., 95.5) or null (ungraded)
+4. Teacher ID is optional when adding subject grades
+5. When grade is null, the subject grade exists but is ungraded (waiting for teacher to grade)
+6. All endpoints return JSON except DELETE operations (204 No Content)
+7. Make sure your Spring Boot application is running on port 8080
+8. If using a different port, update the base URL accordingly
+9. All cURL commands above are Windows-compatible (single-line format)
+10. All API endpoints are prefixed with /api (e.g., /api/students, /api/teachers, /api/subjects)
 
 ================================================================================
 

@@ -31,15 +31,15 @@ public class SubjectGradeController {
     );
 
     private void validateGrade(BigDecimal grade) {
-        if (grade == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Grade is required");
-        }
-        BigDecimal normalized = grade.setScale(2, RoundingMode.HALF_UP);
-        if (!ALLOWED_GRADES.contains(normalized)) {
-            throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST,
-                    "Invalid grade. Allowed values: 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 5"
-            );
+        // Grade can be null (empty/ungraded)
+        if (grade != null) {
+            BigDecimal normalized = grade.setScale(2, RoundingMode.HALF_UP);
+            if (!ALLOWED_GRADES.contains(normalized)) {
+                throw new ResponseStatusException(
+                        HttpStatus.BAD_REQUEST,
+                        "Invalid grade. Allowed values: 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 5"
+                );
+            }
         }
     }
 
@@ -63,7 +63,8 @@ public class SubjectGradeController {
                 updated.getSubjectCode(),
                 updated.getSemester(),
                 updated.getSchoolYear(),
-                updated.getGrade()
+                updated.getGrade(),
+                updated.getTeacher() != null ? updated.getTeacher().getFullName() : null
         );
     }
 

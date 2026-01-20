@@ -58,6 +58,7 @@ public class SecurityConfig {
                 // Public endpoints - anyone can read/list
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/students/**").permitAll()
+                .requestMatchers("/api/teachers/**").permitAll() // All teacher endpoints are public
                 .requestMatchers("/", "/students/**").permitAll() // HTML views
                 .requestMatchers("/css/**", "/js/**").permitAll() // Static resources
                 // Protected endpoints - require authentication for write operations

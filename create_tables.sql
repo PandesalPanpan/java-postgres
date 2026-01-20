@@ -4,6 +4,7 @@
 -- Drop tables if they exist (in reverse order of dependencies)
 DROP TABLE IF EXISTS subject_grades CASCADE;
 DROP TABLE IF EXISTS students CASCADE;
+DROP TABLE IF EXISTS teachers CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
 
 -- Create users table
@@ -20,23 +21,35 @@ CREATE TABLE students (
     full_name VARCHAR(255) NOT NULL
 );
 
+-- Create teachers table
+CREATE TABLE teachers (
+    id BIGSERIAL PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL
+);
+
 -- Create subject_grades table
 CREATE TABLE subject_grades (
     id BIGSERIAL PRIMARY KEY,
     student_id BIGINT NOT NULL,
+    teacher_id BIGINT NULL,
     subject_name VARCHAR(255) NOT NULL,
     subject_code VARCHAR(255) NOT NULL,
     semester VARCHAR(255) NOT NULL,
     school_year VARCHAR(255) NOT NULL,
-    grade DECIMAL(5,2) NOT NULL,
+    grade DECIMAL(5,2) NULL,
     CONSTRAINT fk_subject_grade_student 
         FOREIGN KEY (student_id) 
         REFERENCES students(id) 
-        ON DELETE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT fk_subject_grade_teacher 
+        FOREIGN KEY (teacher_id) 
+        REFERENCES teachers(id) 
+        ON DELETE SET NULL
 );
 
 -- Create indexes for better query performance
 CREATE INDEX idx_subject_grades_student_id ON subject_grades(student_id);
+CREATE INDEX idx_subject_grades_teacher_id ON subject_grades(teacher_id);
 CREATE INDEX idx_subject_grades_subject_code ON subject_grades(subject_code);
 CREATE INDEX idx_users_username ON users(username);
 CREATE INDEX idx_students_student_id ON students(student_id);

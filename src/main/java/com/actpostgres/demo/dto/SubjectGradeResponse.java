@@ -10,18 +10,20 @@ public class SubjectGradeResponse {
     private String semester;
     private String schoolYear;
     private BigDecimal grade;
+    private String teacherName;
 
     public SubjectGradeResponse() {
     }
 
     public SubjectGradeResponse(Long id, String subjectName, String subjectCode, 
-                               String semester, String schoolYear, BigDecimal grade) {
+                               String semester, String schoolYear, BigDecimal grade, String teacherName) {
         this.id = id;
         this.subjectName = subjectName;
         this.subjectCode = subjectCode;
         this.semester = semester;
         this.schoolYear = schoolYear;
         this.grade = grade;
+        this.teacherName = teacherName;
     }
 
     public Long getId() {
@@ -70,6 +72,14 @@ public class SubjectGradeResponse {
 
     public void setGrade(BigDecimal grade) {
         this.grade = grade;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
     }
 }
 

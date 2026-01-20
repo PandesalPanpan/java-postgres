@@ -5,7 +5,6 @@ import java.math.*;
 
 public class UpdateGradeRequest {
 
-    @NotNull(message = "Grade is required")
     private BigDecimal grade;
 
     public UpdateGradeRequest() {

@@ -21,18 +21,21 @@ public class AddSubjectGradeRequest {
     @JsonProperty("school_year")
     private String schoolYear;
 
-    @NotNull(message = "Grade is required")
+    @JsonProperty("teacher_id")
+    private Long teacherId;
+
     private BigDecimal grade;
 
     public AddSubjectGradeRequest() {
     }
 
     public AddSubjectGradeRequest(String subjectName, String subjectCode, 
-                                 String semester, String schoolYear, BigDecimal grade) {
+                                 String semester, String schoolYear, Long teacherId, BigDecimal grade) {
         this.subjectName = subjectName;
         this.subjectCode = subjectCode;
         this.semester = semester;
         this.schoolYear = schoolYear;
+        this.teacherId = teacherId;
         this.grade = grade;
     }
 
@@ -74,6 +77,14 @@ public class AddSubjectGradeRequest {
 
     public void setGrade(BigDecimal grade) {
         this.grade = grade;
+    }
+
+    public Long getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(Long teacherId) {
+        this.teacherId = teacherId;
     }
 }
 
